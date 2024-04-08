@@ -33,6 +33,7 @@ Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kuber
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
 
+```bash
 apiVersion: kubeproxy.config.k8s.io/v1alpha1
 kind: KubeProxyConfiguration
 mode: "ipvs"
