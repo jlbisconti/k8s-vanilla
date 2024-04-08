@@ -33,11 +33,6 @@ Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kuber
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
 
-
-Aquí tienes el contenido de tu archivo convertido a Markdown:
-
-markdown
-Copy code
 # Introducción
 
 MetalLB es una implementación de Load Balancer para entornos Kubernetes que permite exponer servicios mediante direcciones IP externas en entornos locales o en la nube. Permite a los servicios dentro de un clúster Kubernetes ser accesibles desde fuera del clúster.
@@ -193,7 +188,7 @@ jlb@master-01:~$ kubectl get  svc kubernetes-dashboard -n kubernetes-dashboard
 NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)         AGE
 kubernetes-dashboard   LoadBalancer   10.103.93.204   10.10.20.20   443:31796/TCP   46h
 
-Como podemos ver tomo external IP desl rango creado en Mteallb
+Como podemos ver tomo external IP desl rango creado en Metallb
 
 
 
