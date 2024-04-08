@@ -56,7 +56,7 @@ En los entornos locales o en la nube que no proporcionan un servicio de Load Bal
 
 ## Infraestructura
 
-Esta documentación es referente al despliegue de MetalLB en un clúster Kubernetes vanilla instalado en JORSAT. La infraestructura consta de:
+Esta documentación es referente al despliegue de MetalLB en un clúster Kubernetes vanilla instalado en mi infraestura. La infraestructura consta de:
 
 - 1 nodo Master
 - 2 nodos worker
@@ -73,3 +73,9 @@ Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kuber
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
 Luego, establecemos el campo strictARP en true.
+
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: "ipvs"
+ipvs:
+  strictARP: true
