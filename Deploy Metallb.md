@@ -30,14 +30,10 @@ El hipervisor utilizado para correr las VMs es VMware® Workstation 17 Pro 17.5.
 
 Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kubernetes con el siguiente comando:
 
-
+``bash
 kubectl edit configmap -n kube-system kube-proxy
 
-```bash
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
-kind: KubeProxyConfiguration
-mode: "ipvs"
-ipvs:
-  strictARP: true
+
+
 
 
