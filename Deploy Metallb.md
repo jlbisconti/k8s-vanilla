@@ -86,12 +86,64 @@ Luego, verificamos que los pods estén corriendo correctamente:
 
 ```bash
 kubectl get pods -n metallb-system -o wide
-```
+
 NAME                         READY   STATUS    RESTARTS   AGE     IP               NODE        NOMINATED NODE   READINESS GATES
 controller-756c6b677-l6gmx   1/1     Running   0          2d12h   192.168.37.198   worker-02   <none>           <none>
 speaker-8qzfp                1/1     Running   0          2d12h   10.10.20.7      worker-02   <none>           <none>
 speaker-db4qn                1/1     Running   0          2d12h   10.10.20.5      master-01   <none>           <none>
 speaker-k825x                1/1     Running   0          2d12h   10.10.20.15     worker-01   <none>           <none>
+```
+Configuramos nuestro dashboard de Kubernetes para que MetalLB le asigne la IP externa. Para esto, editamos el servicio kubernetes-dashboard con el comando:
+
+```bash
+kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard
+```
+Solo modificamos el campo type para que quede como LoadBalancer.
+
+Guardamos los cambios.
+
+ Solo modificamos el campo type para que quede como LoadBalancer que se vera de esta manera:
+```yaml
+ # Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}
+    metallb.universe.tf/ip-allocated-from-pool: first-pool
+  creationTimestamp: "2024-04-05T21:11:58Z"
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  resourceVersion: "76859"
+  uid: 4f15f27c-8ad6-4235-89d5-77198eb201c7
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.103.93.204
+  clusterIPs:
+  - 10.103.93.204
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31796
+    port: 443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    k8s-app: kubernetes-dashboard
+  sessionAffinity: None
+  type: LoadBalancer
+```
+
+
 
 
 
