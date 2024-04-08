@@ -65,6 +65,33 @@ spec:
     addresses:
     - 10.10.20.20-10.10.20.25 # Estas son IPs de mi LAN y serán las IPs externas
 ```
+L2Advertisement
+```yaml
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: metallab 
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - first-pool
+```
+Después de generar estos archivos, los aplicamos con los comandos:
+
+```bash
+kubectl create -f ippool.yaml
+kubectl create -f L2Advertisement.yaml
+```
+Luego, verificamos que los pods estén corriendo correctamente:
+
+```bash
+kubectl get pods -n metallb-system -o wide
+```
+NAME                         READY   STATUS    RESTARTS   AGE     IP               NODE        NOMINATED NODE   READINESS GATES
+controller-756c6b677-l6gmx   1/1     Running   0          2d12h   192.168.37.198   worker-02   <none>           <none>
+speaker-8qzfp                1/1     Running   0          2d12h   10.10.20.7      worker-02   <none>           <none>
+speaker-db4qn                1/1     Running   0          2d12h   10.10.20.5      master-01   <none>           <none>
+speaker-k825x                1/1     Running   0          2d12h   10.10.20.15     worker-01   <none>           <none>
 
 
 
