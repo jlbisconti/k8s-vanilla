@@ -8,7 +8,7 @@ En los entornos locales o en la nube que no proporcionan un servicio de Load Bal
 
 Componenetes  de metallb.
 
-1. Controlador de MetalLB:
+> 1. Controlador de MetalLB:
 El controlador ( controller) de MetalLB es el componente principal que gestiona la asignación de direcciones IP y el enrutamiento del tráfico para los servicios expuestos con el tipo de servicio LoadBalancer en Kubernetes. El controlador se ejecuta como un controlador personalizado (Custom Resource Definition - CRD) en el clúster Kubernetes.
 
 2. Speakers
