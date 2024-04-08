@@ -44,6 +44,31 @@ ipvs:
   strictARP: true
 ```
 
+Continuamos la instalación de MetalLB aplicando el manifiesto:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.4/manifests/metallb.yaml
+```
+Como tercer paso, vamos a crear los archivos YAML correspondientes al pool de IP's que asignará MetalLB y al archivo L2Advertisement para indicar que vamos a usar capa 2 con ARP como forma de anunciar las IP.
+
+IPPOOL
+```yaml
+apiVersion: metallb.io/v1beta1
+kind: IPAMConfig
+metadata:
+  name: config
+spec:
+  strictAffinity: false
+  pools:
+  - name: default
+    protocol: layer2
+    addresses:
+    - 10.10.20.20-10.10.20.25 # Estas son IPs de mi LAN y serán las IPs externas
+```
+
+
+
+
 
 
 
