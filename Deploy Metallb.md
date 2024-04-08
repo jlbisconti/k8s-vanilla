@@ -33,13 +33,6 @@ Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kuber
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
 
-
-## Instalación
-
-Como primer paso, vamos a editar el ConfigMap del componente kube-proxy de Kubernetes con el siguiente comando:
-
-```bash
-kubectl edit configmap -n kube-system kube-proxy
 Luego, establecemos el campo strictARP en true.
 
 apiVersion: kubeproxy.config.k8s.io/v1alpha1
