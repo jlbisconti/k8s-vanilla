@@ -151,7 +151,7 @@ Deberías obtener una salida similar a esta:
 NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)         AGE
 kubernetes-dashboard   LoadBalancer   10.103.93.204   10.10.20.20   443:31796/TCP   46h
 
-Como puedes ver, MetalLB asignó una IP externa del rango creado. Ahora Podemos acceder a nuestro kubernetes-dashboard tipeando (https://10.10.20.20/#/login)
+Como puedes ver, MetalLB asignó una IP externa del rango creado. Ahora Podemos acceder a nuestro kubernetes-dashboard tipeando https://10.10.20.20/#/login. 
 
 
 
