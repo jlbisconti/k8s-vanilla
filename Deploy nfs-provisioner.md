@@ -173,13 +173,18 @@ Filesystem                                                                      
 10.10.150.2:/nfs/kubernetes/microservicios-sc-nfs-pvc-pvc-5a64c390-80a3-4247-979d-5a5b6e04f78a  2.8T  306G  2.5T  11% /usr/share/nginx/html
 ```
 
+Creamos archivo de prueba en la ruta de nginx
 
-![NaS-vc-mas-fie](https://github.com/murdok2023/k8s-vanilla/assets/144631732/1ee1ea6a-c24c-4e3b-a956-ab417d3ab8e7)
+```bash
+ touch /usr/share/nginx/html/index.html
+```
 
 
 
 
+Verficamos en nuestro NAS la existencia del PV + archivo index.html creado
 
+![NaS-vc-mas-fie](https://github.com/murdok2023/k8s-vanilla/assets/144631732/374b22c6-8cec-431b-b287-e2d73816c1c3)
 
 
 
