@@ -20,6 +20,14 @@ En este caso opte por la solucion nfs-provisioner. La misma es una implementaci√
 ## Instalacion
 
 ### Prerrequisito, Paquete cliente NFS en nodos de K8s
+Es fundamental que  que todos los nodos de Kubernetes tengan los paquetes cliente NFS disponibles.  En este caso necesitamos del paquete  nfs-common instalado en todos los nodos worker de K8s.
+Instalaremos el paquete nfs-common con el siguiente comando:
+
+'''bash
+sudo apt update
+sudo apt install nfs-common -y
+'''
+
 
 
 
