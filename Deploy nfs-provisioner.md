@@ -60,6 +60,13 @@ chmod +x /usr/local/bin/helm
 ```bash
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
 ```
+### Instalacion del Helm chart para NFS
+
+El siguiente ejemplo corresponde a mi servidor NAS.
+
+```bash
+helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=10.10.150.2 --set nfs.path=/nfs/kubernetes --set storageClass.onDelete=true
+```
 
 
 
