@@ -132,7 +132,7 @@ spec:
       volumes:
       - name: nfs-test
         persistentVolumeClaim:
-          claimName: pvc-nfs-provisioner
+          claimName: sc-nfs-pvc
       containers:
       - image: nginx
         name: nginx
