@@ -110,6 +110,8 @@ pvc-nfs-provisioner   Bound    nfs-pv   1Gi        RWX            nfs-storage   
 
 A manera de comprobar el funcionamiento de nfs-provicioner crearemos un POD de Nginx con storage persistente que creara su PV ( Phisical Volume) en el volumen NFS creado en nuestro NAS.
 
+Creamos el deployment correspondiente:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -139,7 +141,10 @@ spec:
           mountPath: /usr/share/nginx/html # Montado en nuestro NAS
 ```
 
-
+Procedemos a la creacion del POD :
+```bash
+ kubectl create -f nginx-deployment-nfs-persist.yaml
+```
 
 
 
