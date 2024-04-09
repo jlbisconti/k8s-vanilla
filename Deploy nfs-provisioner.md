@@ -82,6 +82,17 @@ NAME         PROVISIONER                                     RECLAIMPOLICY   VOL
 nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   27h
 ```
 
+#### Creamos namespace especifico para APPS
+
+```bash
+kubectl create namespace  microservicios
+```
+Luego cambiamos de namespace para trabajar en microservicios con el comando:
+
+```bash
+ kubectl config set-context --current --namespace=microservicios
+```
+
 ### Creacion de PVC (Persitent Volume Claim)
 
 Vamos a crear un pvc en nuestro cluster k8s dedicado a nfs-provisioner con el siguiente contenido
@@ -89,7 +100,7 @@ Vamos a crear un pvc en nuestro cluster k8s dedicado a nfs-provisioner con el si
 ```yaml
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-nfs-provisioner
+  name: sc-nfs-pvc
 spec:
   accessModes:
     - ReadWriteMany
@@ -103,7 +114,7 @@ Comprobamos el status del pv con el siguinte comando:
 ```bash
 kubectl get pvc -n nfs-provisioner
 NAME                  STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
-pvc-nfs-provisioner   Bound    nfs-pv   1Gi        RWX            nfs-storage    <unset>                 27h
+sc-nfs-pvc   Bound    nfs-pv   1Gi        RWX            nfs-storage    <unset>                 27h
 ```
 
 #### Creacion de POD de prueba
@@ -145,6 +156,37 @@ Procedemos a la creacion del POD :
 ```bash
  kubectl create -f nginx-deployment-nfs-persist.yaml
 ```
+
+#### Verificamos el status del POD 
+```bash
+ kubectl get po -o wide
+sc-nfs-nginx-597dcd6447-6k4vj   1/1     Running   0          10m   192.168.37.201   worker-02   <none>      
+```  
+#### Ingresamos al pod para verficar que el volumen NFS este montado:
+```bash
+ kubectl exec -it sc-nfs-nginx-597dcd6447-6k4vj /bin/bash
+```
+Verificamos que el path /usr/share/nginx/html este montado en nuestro NFS
+```bash
+root@sc-nfs-nginx-597dcd6447-6k4vj:/# df -ha /usr/share/nginx/html/
+Filesystem                                                                                      Size  Used Avail Use% Mounted on
+10.10.150.2:/nfs/kubernetes/microservicios-sc-nfs-pvc-pvc-5a64c390-80a3-4247-979d-5a5b6e04f78a  2.8T  306G  2.5T  11% /usr/share/nginx/html
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
