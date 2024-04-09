@@ -1,6 +1,6 @@
 # Introduccion 
 ## Escenario planteado
-Realize la instalacion de un cluster k8s vanilla al que le deploye un load balancer por software, a saber Metallb. 
+Realize la instalacion de un cluster k8s vanilla al que le deploye un load balancer por software, a saber Metallb y se configo un servidor NFS para dar persistencia los POD's que lo requieran 
 
   Como comente anteriormente la infraestructura consta de:
 
@@ -12,6 +12,12 @@ El hipervisor utilizado para correr las VMs es VMware® Workstation 17 Pro 17.5.
   - 4 CPU
   - 4 GB de RAM
   - 120 GB de disco
+
+## Solucion NFS seleccionada
+
+En este caso opte por la solucion nfs-provisioner. La misma es una implementación de un provisionador de almacenamiento para Kubernetes que utiliza el protocolo NFS para proporcionar almacenamiento persistente a las aplicaciones desplegadas en un clúster de Kubernetes.
+
+
 
 
 
