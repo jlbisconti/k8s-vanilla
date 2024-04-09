@@ -174,7 +174,7 @@ Filesystem                                                                      
 ```
 
 
-
+![NaS-vc-mas-fie](https://github.com/murdok2023/k8s-vanilla/assets/144631732/1ee1ea6a-c24c-4e3b-a956-ab417d3ab8e7)
 
 
 
