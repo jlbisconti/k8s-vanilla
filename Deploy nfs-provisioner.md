@@ -1,1 +1,2 @@
 # Introduccion 
+## Escenario planteado
