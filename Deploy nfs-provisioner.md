@@ -77,10 +77,14 @@ En primer lugar vamos a comprobar que se encuentre creado el storage class corre
 ```bash
  kubectl get storageclass nfs-client
 ```
-```text
+```bash
 NAME         PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
 nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   27h
-```
+```bash
+
+### Creacion de PVC (Persitent Volume Clain)
+
+
 
 
 
