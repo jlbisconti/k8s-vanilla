@@ -36,6 +36,29 @@ En nuestro caso la salida  obtenida  fue
 Export list for 10.10.50.2:
 /mnt/soho_storage/samba/shares/kubernetes *
 
+### Instalacion de Helm
+#### ¿que es Helm?
+Helm es una herramienta de gestión de paquetes para Kubernetes que facilita la implementación, actualización y administración de aplicaciones en clústeres de Kubernetes. Permite definir, instalar y actualizar fácilmente aplicaciones complejas con múltiples componentes en Kubernetes utilizando un formato de paquete estandarizado llamado "chart".
+
+Los charts de Helm son como scripts que describen una aplicación de Kubernetes, incluyendo los recursos de Kubernetes necesarios (como despliegos, servicios, secretos, etc.), configuraciones predeterminadas y valores personalizables. Con Helm, los desarrolladores pueden crear charts para empaquetar y distribuir sus aplicaciones de Kubernetes de manera coherente y reutilizable.
+
+#### Instalacion
+
+Para instalar Helm en nuestro nodo master  vamos a descragarlo de su sitio oficial con el el siguiente comando:
+
+```bash
+wget https://get.helm.sh/helm-v3.12.0-linux-amd64.tar.gz
+```
+Luego vamos a descomprimir el archivo .tar.gz y moverlo a la carpeta /usr/local/bin para tenerlo disponible desde cualquier ubicacion:
+
+```bash
+tar -zxvf helm-v3.12.0-linux-amd64.tar.gz
+sudo mv linux-amd64/ /usr/local/bin/
+chmod +x /usr/local/bin/helm
+```
+
+
+
 
 
 
