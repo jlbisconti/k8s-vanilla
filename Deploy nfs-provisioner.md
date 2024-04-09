@@ -56,6 +56,11 @@ tar -zxvf helm-v3.12.0-linux-amd64.tar.gz
 sudo mv linux-amd64/ /usr/local/bin/
 chmod +x /usr/local/bin/helm
 ```
+### Instalacion de repositorio nfs-provioner
+```bash
+helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
+```
+
 
 
 
