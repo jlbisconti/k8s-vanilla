@@ -99,6 +99,46 @@ spec:
       storage: 1Gi
 ```
 
+Comprobamos el status del pv con el siguinte comando:
+```bash
+kubectl get pvc -n nfs-provisioner
+NAME                  STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+pvc-nfs-provisioner   Bound    nfs-pv   1Gi        RWX            nfs-storage    <unset>                 27h
+```
+
+#### Creacion de POD de prueba
+
+A manera de comprobar el funcionamiento de nfs-provicioner crearemos un POD de Nginx con storage persistente que creara su PV ( Phisical Volume) en el volumen NFS creado en nuestro NAS.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sc-nginx
+  name: sc-nfs-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sc-nginx
+  template:
+    metadata:
+      labels:
+        app: sc-nginx
+    spec:
+      volumes:
+      - name: nfs-test
+        persistentVolumeClaim:
+          claimName: pvc-nfs-provisioner
+      containers:
+      - image: nginx
+        name: nginx
+        volumeMounts:
+        - name: nfs-test # template.spec.volumes[].name
+          mountPath: /usr/share/nginx/html # Montado en nuestro NAS
+```
+
 
 
 
