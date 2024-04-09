@@ -23,10 +23,19 @@ En este caso opte por la solucion nfs-provisioner. La misma es una implementaci√
 Es fundamental que  que todos los nodos de Kubernetes tengan los paquetes cliente NFS disponibles.  En este caso necesitamos del paquete  nfs-common instalado en todos los nodos worker de K8s.
 Instalaremos el paquete nfs-common con el siguiente comando:
 
-'''bash
+```bash
 sudo apt update
 sudo apt install nfs-common -y
-'''
+```
+Una vez instalado el paquete nfs-common en todos los nodos worker vamos a utilizar el comando showmount para verificar la ruta en la que esta exportando el share  nuestro servidor nfs:
+
+```bash
+showmount -e 10.10.50.2
+```
+En nuestro caso la salida  obtenida  fue 
+Export list for 10.10.50.2:
+/mnt/soho_storage/samba/shares/kubernetes *
+
 
 
 
