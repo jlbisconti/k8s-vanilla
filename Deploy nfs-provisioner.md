@@ -80,9 +80,25 @@ En primer lugar vamos a comprobar que se encuentre creado el storage class corre
 ```bash
 NAME         PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
 nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   27h
-```bash
+```
 
-### Creacion de PVC (Persitent Volume Clain)
+### Creacion de PVC (Persitent Volume Claim)
+
+Vamos a crear un pvc en nuestro cluster k8s dedicado a nfs-provisioner con el siguiente contenido
+
+```yaml
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nfs-provisioner
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-storage
+  resources:
+    requests:
+      storage: 1Gi
+```
+
 
 
 
