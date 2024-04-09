@@ -71,6 +71,16 @@ El siguiente ejemplo corresponde a mi servidor NAS.
 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=10.10.150.2 --set nfs.path=/nfs/kubernetes --set storageClass.onDelete=true
 ```
 
+### Comprobaciones 
+
+En primer lugar vamos a comprobar que se encuentre creado el storage class correspondiente:
+```bash
+ kubectl get storageclass nfs-client
+```
+```text
+NAME         PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   27h
+```
 
 
 
