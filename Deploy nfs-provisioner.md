@@ -62,7 +62,7 @@ helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/
 ```
 ### Creacion de namespace nfs-provicioner en k8s-vanilla
 ```bash
-kubectl create namespace  nfs-provicioner
+kubectl create namespace  nfs-provisioner
 ```
 ### Instalacion del Helm chart para NFS
 
