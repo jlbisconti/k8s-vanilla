@@ -64,6 +64,13 @@ helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/
 ```bash
 kubectl create namespace  nfs-provisioner
 ```
+
+Luego cambiamos de namespace para trabajar en  nfs-provisioner con el comando:
+
+```bash
+ kubectl config set-context --current --namespace=nfs-provisioner
+```
+
 ### Instalacion del Helm chart para NFS
 
 El siguiente ejemplo corresponde a mi servidor NAS.
