@@ -105,7 +105,7 @@ Luego cambiamos de namespace para trabajar en microservicios con el comando:
 Vamos a crear un pvc en nuestro cluster k8s dedicado a nfs-provisioner con el siguiente contenido
 
 ```yaml
-apiVersion:v1
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sc-nfs-pvc
@@ -116,26 +116,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-kind: PersistentVolumeClaim
-metadata:
-  name: sc-nfs-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: nfs-storage
-  resources:
-    requests:
-      storage: 1Gi
-kind: PersistentVolumeClaim
-metadata:
-  name: sc-nfs-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: nfs-storage
-  resources:
-    requests:
-      storage: 1Gi
+
 ```
 
 Comprobamos el status del pv con el siguinte comando:
