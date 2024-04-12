@@ -166,8 +166,12 @@ Descargamos la ultimna version. Al momento de la realizacion de este documento, 
 2 - Luego de instalar la aplicacion pgadmin4 vamos a crear la conexion: 
 
 
+
 ![pgadmin-1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/21c4996f-cf96-49e0-b561-ac2a61ebcaab)
 
+
+
+![pgadmin-1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b30672af-14d3-4368-a6be-66c179503863)
 
 
 
