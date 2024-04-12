@@ -36,6 +36,62 @@ spec:
     requests:
       storage: 1Gi
  ```
+Luego crearemos el pvc con el comando:
+
+ ```bash
+kubectl create -f postgres-pvc.yaml
+ ```
+Ahora verificamos el status en que se  encuentra nuestro pvc :
+
+ ```bash
+ kubectl get pvc
+ ```
+Vamos a obtene una salida similar a la siguinte:
+
+ ```
+ NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+postgres-pvc   Bound    pvc-454985c9-3696-4ce0-b891-9f94e14b7d0b   1Gi        RWO            nfs-client      <unset>                 56m
+ ```
+
+Podemos verificar  que el pvc esta en estado Bound ya que creo el pv (Phisical Volume) llamado pvc-454985c9-3696-4ce0-b891-9f94e14b7d0b con el tamaño de 1 GB.
+
+Ahora pasaremos a crear nuestro archivo .yaml correspondiente al deployment del POD con el siguente contenido:
+
+ ```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "tucontraseña" # Colacamos nuestra contraseña
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+ ```
+
+
 
 
 
