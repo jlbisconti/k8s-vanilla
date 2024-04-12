@@ -81,7 +81,7 @@ spec:
         - containerPort: 5432
         env:
         - name: POSTGRES_PASSWORD
-          value: "tucontraseña" # Colacamos nuestra contraseña
+          value: "tucontraseña" # Colcamos nuestra contraseña
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
