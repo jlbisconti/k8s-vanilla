@@ -116,6 +116,21 @@ spec:
       targetPort: 5432
   type: LoadBalancer
 ```
+Con el siguiente comando verificamos el servicio:
+
+ ```bash
+kubectl get svc
+```
+
+La salida deberia ser similar a la siguiente 
+ ```
+NAME               TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)          AGE
+postgres-service   LoadBalancer   10.96.204.86    10.10.100.22   5432:30718/TCP   70m
+ ```
+
+Como podemos ver el servicio se creo correctamente y tiene la ip 10.10.100.22 para acceder externamnete a nuestro postgres.
+
+
 
 
 
