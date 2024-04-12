@@ -170,8 +170,12 @@ Descargamos la ultimna version. Al momento de la realizacion de este documento, 
 ![pgadmin-1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/21c4996f-cf96-49e0-b561-ac2a61ebcaab)
 
 
+![pgadmin-2](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/171e1adf-01fd-46eb-9f68-66c571e2f892)
 
-![pgadmin-1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b30672af-14d3-4368-a6be-66c179503863)
+![pgadmin-3](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/c8a6654a-3880-4438-aba1-d8c391fec7fb)
+
+
+
 
 
 
