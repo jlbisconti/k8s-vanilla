@@ -55,7 +55,7 @@ postgres-pvc   Bound    pvc-454985c9-3696-4ce0-b891-9f94e14b7d0b   1Gi        RW
 
 Podemos verificar  que el pvc esta en estado Bound ya que creo el pv (Phisical Volume) llamado pvc-454985c9-3696-4ce0-b891-9f94e14b7d0b con el tamaño de 1 GB.
 
-Ahora pasaremos a crear nuestro archivo .yaml correspondiente al deployment del POD con el siguente contenido:
+Ahora pasaremos a crear nuestro archivo .yaml correspondiente al deployment del POD con el siguiente contenido:
 
  ```yaml
 apiVersion: apps/v1
@@ -129,6 +129,24 @@ postgres-service   LoadBalancer   10.96.204.86    10.10.100.22   5432:30718/TCP 
  ```
 
 Como podemos ver el servicio se creo correctamente y tiene la ip 10.10.100.22 para acceder externamente a nuestro postgres.
+
+## Configuracion de postgres 16
+
+Como primer paso vamos a ingresar al POD con el comando: 
+
+ ```bash
+ kubectl exec -it postgres-deployment-7d76798d6b-5cd8h /bin/bash
+```
+Tener en cuenta que en cada caso el pod va recibir un nombre distinto.
+
+Una vez dentro del POD vamos a crear el cluster de postgres con el siguinte comando:
+ ```bash
+pg_createcluster 16 main --start
+ ```
+
+
+
+
 
 
 
