@@ -147,6 +147,24 @@ Como paso siguiente vamos a iniciar el servicio de postgres con el comando:
  ```bash
 pg_ctlcluster 16 main start
  ```
+Comprobamos el status del servicio postgres:
+ ```bash
+service postgresql status
+ ```
+Vamos a ver una salida como esta:
+```
+16/main (port 5433): online
+```
+## Conexion externa a postgres , Prueba del POD.
+
+Para finalizar vamos a conectarnos a el servicio postgres de nuestro POD. En este caso decidi realizar la prueba con la aplicacion pgadmin4.
+
+1 - Desargamos la aplicacion pgadmin4 desde el siguiente link [pgadmnin4](https://www.pgadmin.org/download/pgadmin-4-windows/)
+
+
+
+
+
 
 
 
