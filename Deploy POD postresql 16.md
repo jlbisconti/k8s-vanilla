@@ -139,10 +139,15 @@ Como primer paso vamos a ingresar al POD con el comando:
 ```
 Tener en cuenta que en cada caso el pod va recibir un nombre distinto.
 
-Una vez dentro del POD vamos a crear el cluster de postgres con el siguinte comando:
+Una vez dentro del POD vamos a crear el cluster de postgres con el siguiente comando:
  ```bash
 pg_createcluster 16 main --start
  ```
+Como paso siguiente vamos a iniciar el servicio de postgres con el comando:
+ ```bash
+pg_ctlcluster 16 main start
+ ```
+
 
 
 
