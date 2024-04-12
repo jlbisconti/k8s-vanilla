@@ -159,7 +159,14 @@ Vamos a ver una salida como esta:
 
 Para finalizar vamos a conectarnos a el servicio postgres de nuestro POD. En este caso decidi realizar la prueba con la aplicacion pgadmin4.
 
-1 - Desargamos la aplicacion pgadmin4 desde el siguiente link [pgadmnin4](https://www.pgadmin.org/download/pgadmin-4-windows/)
+1 - Desargamos la aplicacion pgadmin4 desde el siguiente link [pgadmin4](https://www.pgadmin.org/download/pgadmin-4-windows/)
+
+Descargamos la ultimna version. Al momento de la realizacion de este documento, la version 8.5.
+
+2 - Luego de instalar la aplicacion pgadmin4 vamos a crear la conexion: 
+
+
+![pgadmin-1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/21c4996f-cf96-49e0-b561-ac2a61ebcaab)
 
 
 
