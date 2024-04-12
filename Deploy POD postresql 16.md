@@ -175,7 +175,9 @@ Descargamos la ultimna version. Al momento de la realizacion de este documento, 
 ![pgadmin-3](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/c8a6654a-3880-4438-aba1-d8c391fec7fb)
 
 
+Una vez cargados todos los parametros presionamos el boton save y veremos como la aplicacion pgadmin4 se conecta a nuestra db postgres perteniente al POD creado:
 
+![pgadmin-4](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/3580dcc5-3f0b-4b3a-9624-e519dac630ba)
 
 
 
