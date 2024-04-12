@@ -90,7 +90,32 @@ spec:
         persistentVolumeClaim:
           claimName: postgres-pvc
  ```
+Verificamos el status de nuestro pod:
 
+ ```bash
+jlb@master-01:~$ kubectl get po -o wide
+NAME                                   READY   STATUS    RESTARTS        AGE   IP                NODE        NOMINATED NODE   READINESS GATES
+postgres-deployment-7d76798d6b-5cd8h   1/1     Running   0               66m   192.168.202.198   worker-03   <none>           <none>
+ ```
+Como podemos ver nuestro pod se encuentra corriendo en nuestro nodo worker-03.
+A continuacion crearemos el servicio de typo Loadbalancer pr el cual Metallb nos proporcionara una ip externa de su pool y el PAT ( Port Address Translation) necesario para hacer visible nuestro POD desde afuera del cluster  k8s.  
+
+Creamos  el archivo postgres-svc.yaml con siguiente contenido:
+
+ ```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: LoadBalancer
+```
 
 
 
