@@ -128,7 +128,7 @@ NAME               TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)        
 postgres-service   LoadBalancer   10.96.204.86    10.10.100.22   5432:30718/TCP   70m
  ```
 
-Como podemos ver el servicio se creo correctamente y tiene la ip 10.10.100.22 para acceder externamnete a nuestro postgres.
+Como podemos ver el servicio se creo correctamente y tiene la ip 10.10.100.22 para acceder externamente a nuestro postgres.
 
 
 
