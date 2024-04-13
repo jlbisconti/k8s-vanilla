@@ -98,7 +98,7 @@ NAME                                   READY   STATUS    RESTARTS        AGE   I
 postgres-deployment-7d76798d6b-5cd8h   1/1     Running   0               66m   192.168.202.198   worker-03   <none>           <none>
  ```
 Como podemos ver nuestro pod se encuentra corriendo en nuestro nodo worker-03.
-A continuacion crearemos el servicio de typo Loadbalancer por el cual Metallb nos proporcionara una ip externa de su pool y el PAT ( Port Address Translation) necesario para hacer visible nuestro POD desde afuera del cluster  k8s.  
+A continuacion crearemos el servicio de tipo Loadbalancer por el cual Metallb nos proporcionara una ip externa de su pool y el PAT ( Port Address Translation) necesario para hacer visible nuestro POD desde afuera del cluster  k8s.  
 
 Creamos  el archivo postgres-svc.yaml con el siguiente contenido:
 
