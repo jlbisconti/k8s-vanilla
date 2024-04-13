@@ -1,5 +1,5 @@
 # Introducción
-En este documento vamos a detallar el deploy de un POD Posgres version 16 sobre mi cluster k8s. Veremos el paso a paso para crear el pvc (Persistent Volume Claim), el deployment, el servicio para exponer a postgres desde fuera del cluster y la prueba de conexion externa al POD.
+En este documento vamos a detallar el deploy de un POD Postgres version 16 sobre mi cluster k8s. Veremos el paso a paso para crear el pvc (Persistent Volume Claim), el deployment, el servicio para exponer a postgres desde fuera del cluster y la prueba de conexion externa a la DB del POD.
 
 ## Escenario planteado
  Tenemos un cluster que consta de:
@@ -46,7 +46,7 @@ Ahora verificamos el status en que se  encuentra nuestro pvc :
  ```bash
  kubectl get pvc
  ```
-Vamos a obtene una salida similar a la siguinte:
+Vamos a obtene una salida similar a la siguiente:
 
  ```
  NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
@@ -98,9 +98,9 @@ NAME                                   READY   STATUS    RESTARTS        AGE   I
 postgres-deployment-7d76798d6b-5cd8h   1/1     Running   0               66m   192.168.202.198   worker-03   <none>           <none>
  ```
 Como podemos ver nuestro pod se encuentra corriendo en nuestro nodo worker-03.
-A continuacion crearemos el servicio de typo Loadbalancer pr el cual Metallb nos proporcionara una ip externa de su pool y el PAT ( Port Address Translation) necesario para hacer visible nuestro POD desde afuera del cluster  k8s.  
+A continuacion crearemos el servicio de typo Loadbalancer por el cual Metallb nos proporcionara una ip externa de su pool y el PAT ( Port Address Translation) necesario para hacer visible nuestro POD desde afuera del cluster  k8s.  
 
-Creamos  el archivo postgres-svc.yaml con siguiente contenido:
+Creamos  el archivo postgres-svc.yaml con el siguiente contenido:
 
  ```yaml
 apiVersion: v1
@@ -161,7 +161,7 @@ Para finalizar vamos a conectarnos a el servicio postgres de nuestro POD. En est
 
 1 - Desargamos la aplicacion pgadmin4 desde el siguiente link [pgadmin4](https://www.pgadmin.org/download/pgadmin-4-windows/)
 
-Descargamos la ultimna version. Al momento de la realizacion de este documento, la version 8.5.
+Descargamos la ultima version. Al momento de la realizacion de este documento, la version 8.5.
 
 2 - Luego de instalar la aplicacion pgadmin4 vamos a crear la conexion: 
 
