@@ -23,4 +23,38 @@ Vamos a cubrir la necesidad adicional de storage persistente para nuestros PODS 
  ```bash
  kubectl config set-context --current --namespace=openebs
 ```
+Luego nos posisionaremos en el namspace creado:
+
+ ```bash
+ kubectl config set-context --current --namespace=openebs
+```
+
+Ahora agregaremos el repositorio helm correspondiente a openebs:
+ ```bash
+ helm repo add openebs https://openebs.github.io/charts
+```
+A continuacion instalamos el operador de openebs
+ ```bash
+helm install --namespace openebs --name openebs openebs/openebs
+```
+Verificamos la instalación del controlador:
+ ```bash
+kubectl get pods -n openebs
+```
+
+Esperamos a que todos los pods estén en estado "Running".
+ ```text
+jlb@master-01:~/iscsi$ kubectl get pods -n openebs
+NAME                                           READY   STATUS   
+openebs-localpv-provisioner-56d6489bbc-fdq5t   1/1     Running  
+openebs-ndm-llmmj                              1/1     Running   
+openebs-ndm-operator-5d7944c94d-vshpx          1/1     Running   
+openebs-ndm-rxwkr                              1/1     Running   
+openebs-ndm-sh7jj                              1/1     Running   
+```
+
+
+
+
+
 
