@@ -136,6 +136,48 @@ spec:
 kubectl create -f pv-iscsi.yaml
 ```
 
+Verificamos el status de pv y pvc:
+
+```bash
+jlb@master-01:~$ kubectl get pv,pvc
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                 STORAGECLASS    VOLUMEATTRIBUTESCLASS   REASON   AGE
+persistentvolume/iscsi-pv                                   1Gi        RWO            Retain           Bound    microservicios/pvc-iscsi              
+```
+Como siguiente paso creamos y aplicamos el deployment de nuestro POD:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-iscsi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-iscsi
+  template:
+    metadata:
+      labels:
+        app: nginx-iscsi
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: iscsi-pv
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: iscsi-pv
+        persistentVolumeClaim:
+          claimName:  pvc-iscsiin
+  storageClassName: openebs-iscsi
+```
+
+```bash
+jlb@master-01:~/iscsi$ kubectl get po
+NAME                                   READY   STATUS    RESTARTS       
+nginx-iscsi-58d445f4bf-xfh9l           1/1     Running   0               
+```
 
 
 
