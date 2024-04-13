@@ -14,5 +14,13 @@ El hipervisor utilizado para correr las VMs es VMware® Workstation 17 Pro 17.5.
   - 4 GB de RAM
   - 120 GB de disco
     
-Vamos a cubrir la necesidad adicional de storage persistente para nuestros PODS con el protocolo ISCSI
+Vamos a cubrir la necesidad adicional de storage persistente para nuestros PODS con el protocolo ISCSI y realizaremos la creacion de un pod NGINX de prueba. La solucion que vamos a deployar en nuestro cluster sera openebs.
+
+## Instalacion
+
+ Como primer paso nos vamos a posicionar en nuestro namespace llamado openebs con el siguiente comando:
+
+ ```bash
+ kubectl config set-context --current --namespace=openebs
+```
 
