@@ -53,6 +53,88 @@ openebs-ndm-rxwkr                              1/1     Running
 openebs-ndm-sh7jj                              1/1     Running   
 ```
 
+Ahora procedemos a crear el sorage class de openebs:
+ ```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-iscsi
+provisioner: openebs.io/provisioner-iscsi
+parameters:
+  openebs.io/storage-pool: default
+ ```
+
+verificamos la creacion del sc :
+```bash
+kubectl get sc
+ ```
+Deberiamos ver una salida como la siguiente:
+ ```textplain
+openebs-iscsi      openebs.io/provisioner-iscsi                    Delete          Immediate              false          
+```
+
+## Deploy de POD nginx con pv residente en el volumen ISCSI
+
+El primer paso va a ser obtener informacion de nuestro target ISCSI con el siguiente comando:
+
+ ```bash
+sudo iscsiadm -m discovery -t st -p 10.10.150.2
+```
+Este comando nos traera la siguiente informacion:
+ ```bash
+10.10.150.2:3260,1 iqn.1992-04.com.emc:storage.Jorsat-NAS01.isci-nas
+```
+Como podemos ver tenemos:
+ 
+`IP del target (NAS): 10.10.150.2`
+`Puerto ISCSI: 3260`
+`IQN: iqn.1992-04.com.emc:storage.Jorsat-NAS01.isci-nas`
+
+Ahora procedemos a crear el pvc:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-iscsi
+spec:
+  storageClassName: openebs-iscsi
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+ ```bash
+ kubectl create -f pvc-iscsi.yaml
+```
+
+Y a continuacion creamos el pv:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: iscsi-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  iscsi:
+    targetPortal: 10.10.150.2
+    iqn: iqn.1992-04.com.emc:storage.Jorsat-NAS01.isci-nas
+    lun: 0
+    fsType: ext4
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-iscsi
+```
+
+```bash
+kubectl create -f pv-iscsi.yaml
+```
 
 
 
