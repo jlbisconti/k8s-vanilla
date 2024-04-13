@@ -174,6 +174,10 @@ spec:
 ```
 
 ```bash
+kubectl create -f deployment-nginx-iscsi.yaml          
+```
+
+```bash
 jlb@master-01:~/iscsi$ kubectl get po
 NAME                                   READY   STATUS    RESTARTS       
 nginx-iscsi-58d445f4bf-xfh9l           1/1     Running   0               
