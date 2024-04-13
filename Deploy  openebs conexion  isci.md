@@ -18,10 +18,9 @@ Vamos a cubrir la necesidad adicional de storage persistente para nuestros PODS 
 
 ## Instalacion
 
- Como primer paso nos vamos a posicionar en nuestro namespace llamado openebs con el siguiente comando:
-
+ Como primer paso   vamos a crear el namespace openenbs
  ```bash
- kubectl config set-context --current --namespace=openebs
+ kubectl create namespace openebs
 ```
 Luego nos posisionaremos en el namspace creado:
 
