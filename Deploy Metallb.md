@@ -47,7 +47,7 @@ ipvs:
 Continuamos la instalación de MetalLB aplicando el manifiesto:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.4/manifests/metallb.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.4/config/manifests/metallb-native.yaml
 ```
 Como tercer paso, vamos a crear los archivos YAML correspondientes al pool de IP's que asignará MetalLB y al archivo L2Advertisement para indicar que vamos a usar capa 2 con ARP como forma de anunciar las IP.
 
