@@ -54,16 +54,13 @@ Como tercer paso, vamos a crear los archivos YAML correspondientes al pool de IP
 IPPOOL
 ```yaml
 apiVersion: metallb.io/v1beta1
-kind: IPAMConfig
+kind: IPAddressPool
 metadata:
-  name: config
+  name: first-pool
+  namespace: metallb-system
 spec:
-  strictAffinity: false
-  pools:
-  - name: default
-    protocol: layer2
-    addresses:
-    - 10.10.20.20-10.10.20.25 # Estas son IPs de mi LAN y serán las IPs externas
+  addresses:
+  - 10.10.100.30-10.10.100.60
 ```
 L2Advertisement
 ```yaml
