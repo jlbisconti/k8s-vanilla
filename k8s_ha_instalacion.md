@@ -22,11 +22,12 @@ La nueva infraestructura virtual consta de :
 ## Instalacion
 Para comenzar vamos a hacer la realizacion de los pre requisitos necesarios  a saber:
 
+> Hacerlo en  Masters y Workers
 - Deshabiltar la particion swap de todos los futuros nodos k8s.
 - Confiruracion de reglas iptables y de sysctl.
 - Instalacion de paquetes necesarios.
 
-En primerr lugar deshabilitamos la particion swap:
+En primer lugar deshabilitamos la particion swap:
 ```
 vi /etc/fstab # comentamos o borramos la linea referente a la particion swap
 ```
@@ -39,3 +40,25 @@ sudo modprobe br_netfilter
 sudo printf "net.bridge.bridge-nf-call-iptables = 1\nnet.ipv4.ip_forward = 1\nnet.bridge.bridge-nf-call-ip6tables = 1\n" >> /etc/sysctl.d/99-kubernetes-cri.conf
 sudo sysctl --system
 ```
+
+## Adaptamos  "overlay" y  "netfilter" para nuestro K8s
+
+
+```
+ cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+ overlay
+ br_netfilter
+ EOF
+
+ cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+ net.bridge.bridge-nf-call-iptables  = 1
+ net.bridge.bridge-nf-call-ip6tables = 1
+ net.ipv4.ip_forward                 = 1
+ EOF
+
+ sudo sysctl --system
+
+```
+
+<br />
+<hr>
