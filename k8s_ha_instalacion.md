@@ -27,7 +27,6 @@ Ip planning
  - Master-02 10.10.100.23
  - master-03 10.10.100.24
 
-## Instalacion
 Para comenzar vamos a hacer la realizacion de los pre requisitos necesarios  a saber:
 
 > Pasos de instalacion y configuracion de HAproxy
@@ -55,6 +54,7 @@ Editamos la configuracion con el comando:
 sudo vim /etc/haproxy/haproxy.cfg
 ```
 Nuestra configuracion sera la siguiente:
+> Colocar las ips y nombres de host correspondientes para caso
 
 ```yaml
 frontend fe-apiserver
@@ -78,8 +78,15 @@ backend be-apiserver
    server master-03 10.10.100.24:6443 check fall 3 rise 2
 ```
 
+Reiniciamos el servicio:
 
+```bash
+systemctl restart haproxy
+systemctl status haproxy
+```
+> Aseguremosnos que HAproxy tenga su servicio en estado running
 
+Comprobamos 
   
 
 En primer lugar deshabilitamos la particion swap:
