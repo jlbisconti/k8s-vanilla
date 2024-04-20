@@ -86,8 +86,28 @@ systemctl status haproxy
 ```
 > Aseguremosnos que HAproxy tenga su servicio en estado running
 
-Comprobamos 
-  
+Comprobamos  con nc que responda en el puerto 6443
+
+```bash
+  nc -v localhost 6443
+  Connection to localhost 6443 port [tcp/*] succeeded!
+ ```
+
+Instalamos los paquetes de kubernestes :
+
+ ```
+ sudo apt-cache search kubeadm && apt-cache search kubelet && apt-cache search kubectl
+ sudo apt install kubeadm kubelet kubectl -y
+  ```
+Marcamos los paquetes para que no sean upgradeables
+```
+sudo apt-mark hold kubeadm kubelet kubectl
+```
+
+
+## Instalacion nodos k8s
+
+> Los siguientes pasos de instalacion se realizaran tanto en nodos master como en workers
 
 En primer lugar deshabilitamos la particion swap:
 ```
