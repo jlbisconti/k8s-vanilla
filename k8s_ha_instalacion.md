@@ -54,7 +54,7 @@ Editamos la configuracion con el comando:
 sudo vim /etc/haproxy/haproxy.cfg
 ```
 Nuestra configuracion sera la siguiente:
-> Colocar las ips y nombres de host correspondientes para caso
+> Colocar las ips y nombres de host correspondientes para cada  caso
 
 ```yaml
 frontend fe-apiserver
@@ -167,6 +167,26 @@ sudo apt install kubeadm kubelet kubectl -y
  sudo systemctl restart kubelet.service
  ```
 
+## Inicializamos el cluster de kubernes 
 
+Comenzamos con nuestro nodo master-01:
+
+```
+sudo kubeadm init --control-plane-endpoint 10.10.100.24:6443 --upload-certs --pod-network-cidr=192.168.0.0/16 
+```
+
+Luego de tener nuestro nodo master-01 vamos a instalar calico como CNI para el manjo de las redes de nuestro cluster.
+
+Desargamos calico:
+
+```
+wget https://docs.projectcalico.org/manifests/calico.yaml
+```
+
+Luego aplicaamos el archivo calico.yaml:
+
+```
+kubectl apply -f calico.yaml
+```
 
 
