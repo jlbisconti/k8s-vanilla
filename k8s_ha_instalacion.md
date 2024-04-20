@@ -228,5 +228,23 @@ etcd-master-02
 etcd-master-03 
 ```
 
+Join de nuestro nodo worker:
+```
+sudo kubeadm join 10.10.100.24:6443 --token 152el8.p0ajifpi371yawc0 \
+        --discovery-token-ca-cert-hash sha256:187bb2675840bb108b5293aec3ab9c301996ff31a5b61f4059537ccc5245068f
+```
+
+
+## Pasos finales
+
+AL final de este doc lo que haremos es copiar el path .kube/config desde cualquier nodo master del cluster hacia el home de nuestra balanceadora HAproxy ya que necesita la config de auth de los api server
+
+```
+scp admin.conf  jlb@10.10.100.21:/home/jlb/
+
+```
+
+Finalmnete resta probar reiniciando nodos mater para comprobar que el cluster sigue disponible. Podemos chequear los logs de Haproxy para verificar que marque como DOWN el master reiniciado y los demas UP.
+
 
 
