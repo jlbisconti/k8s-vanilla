@@ -175,7 +175,7 @@ Comenzamos con nuestro nodo master-01:
 sudo kubeadm init --control-plane-endpoint 10.10.100.24:6443 --upload-certs --pod-network-cidr=192.168.0.0/16 
 ```
 
-Luego de tener nuestro nodo master-01 vamos a instalar calico como CNI para el manjo de las redes de nuestro cluster.
+Luego de tener nuestro nodo master-01 vamos a instalar calico como CNI para el manejo de las redes de nuestro cluster.
 
 Descargamos calico:
 
@@ -183,24 +183,50 @@ Descargamos calico:
 wget https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
-Luego aplicaamos el archivo calico.yaml:
+Luego aplicamos el archivo calico.yaml:
 
 ```
 kubectl apply -f calico.yaml
 ```
-Luego e unos minutos veremos que nuestro nodo esta en estado ready:
+En unos minutos veremos que nuestro nodo esta en estado ready:
 ```
 NAME        STATUS   ROLES           AGE    VERSION
 master-01   Ready    control-plane   2m    v1.29.4
 ```
 A continuacion  procedemos a joinear los nodos master-02 y master-03 con el siguiente comando:
+
 ```bash
 sudo kubeadm join 10.10.100.24:6443 --token 152el8.p0ajifpi371yawc0 \
         --discovery-token-ca-cert-hash sha256:c352f0b3740a2db9448dd438921bb350113b459447a2bddbbce9a80ae86c9e9d \
         --control-plane --certificate-key 187bb2675840bb108b5293aec3ab9c301996ff31a5b61f4059537ccc5245068f
 ```
-> Siempre tener en cuenta que los valores de los flags token, --discovery-token-ca-cert-has y -certificate-key son unicos en cada join de nodos con lo cual deben cdemos colocar los valores resultantes del comando  kubeadm init de nuestro primer nodo master.
+> Siempre tener en cuenta que los valores de los flags token, --discovery-token-ca-cert-has y -certificate-key son unicos en cada join de nodos con lo cual deben  colocar los valores resultantes del comando  kubeadm init de nuestro primer nodo master.
 
+Ahora chequiemos que los pod del namespace kube-system esten distribuidos en los tres nodos master. 
+
+Ejecutamos el comando 
+
+```bash
+ kubectl get po -n kube-system 
+```
+Deberemos ver que tenemos lso siguintes pods criticos:
+```
+kube-scheduler-master-01                  
+kube-scheduler-master-02                
+kube-scheduler-master-03
+
+kube-controller-manager-master-01       
+kube-controller-manager-master-02          
+kube-controller-manager-master-03
+
+kube-apiserver-master-01                   
+kube-apiserver-master-02                   
+kube-apiserver-master-03
+
+etcd-master-01                           
+etcd-master-02                          
+etcd-master-03 
+```
 
 
 
