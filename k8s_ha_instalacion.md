@@ -19,3 +19,23 @@ La nueva infraestructura virtual consta de :
   - 1 CPU
   - 1 GB
   - 15 GB de disco 
+## Instalacion
+Para comenzar vamos a hacer la realizacion de los pre requisitos necesarios  a saber:
+
+- Deshabiltar la particion swap de todos los futuros nodos k8s.
+- Confiruracion de reglas iptables y de sysctl.
+- Instalacion de paquetes necesarios.
+
+En primerr lugar deshabilitamos la particion swap:
+```
+vi /etc/fstab # comentamos o borramos la linea referente a la particion swap
+```
+## Habilitamos  Netfilter para ContainerD
+
+```
+sudo printf "overlay\nbr_netfilter\n" >> /etc/modules-load.d/containerd.conf
+sudo modprobe overlay
+sudo modprobe br_netfilter
+sudo printf "net.bridge.bridge-nf-call-iptables = 1\nnet.ipv4.ip_forward = 1\nnet.bridge.bridge-nf-call-ip6tables = 1\n" >> /etc/sysctl.d/99-kubernetes-cri.conf
+sudo sysctl --system
+```
