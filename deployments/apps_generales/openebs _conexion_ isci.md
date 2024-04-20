@@ -168,7 +168,7 @@ spec:
       volumes:
       - name: iscsi-pv
         persistentVolumeClaim:
-          claimName:  pvc-iscsiin
+          claimName:  pvc-iscsin
   storageClassName: openebs-iscsi
 ```
 
