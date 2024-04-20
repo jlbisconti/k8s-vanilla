@@ -27,6 +27,22 @@ Instalaremos el paquete nfs-common con el siguiente comando:
 sudo apt update
 sudo apt install nfs-common -y
 ```
+ Vamos a permitir el trafico entrante y saliente de NFS a todos los nodos k8s con las siguientes reglas iptables:
+```bash
+iptables -A INPUT -p tcp --dport 2049 -j ACCEPT
+iptables -A INPUT -p udp --dport 2049 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 2049 -j ACCEPT
+iptables -A OUTPUT -p udp --sport 2049 -j ACCEPT
+```
+> Tener en cuenta que las reglas deben ser persistentes al reinicio de los nodos. Para esto vamos a instalar el paquete iptables-pesistent
+```bash
+sudo apt-get install iptables-persistent
+```
+Luego vamos a guardar las reglas agregadas en todos los nodos con el comando
+
+```
+sudo iptables-save > /etc/iptables/rules.v4
+```
 Una vez instalado el paquete nfs-common en todos los nodos worker vamos a utilizar el comando showmount para verificar la ruta en la que esta exportando el share  nuestro servidor nfs:
 
 ```bash
