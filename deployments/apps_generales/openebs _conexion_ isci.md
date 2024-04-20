@@ -34,7 +34,7 @@ Ahora agregaremos el repositorio helm correspondiente a openebs:
 ```
 A continuacion instalamos el operador de openebs
  ```bash
-helm install --namespace openebs --name openebs openebs/openebs
+helm install openebs openebs/openebs --namespace openebs
 ```
 Verificamos la instalación del controlador:
  ```bash
