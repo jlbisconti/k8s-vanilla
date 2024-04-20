@@ -154,6 +154,20 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 sudo apt-get update
  ```
 
+Instalamos containerd:
+ ```
+sudo apt-cache search containerd
+sudo apt install containerd -y
+sudo mkdir /etc/containerd
+sudo sh -c "containerd config default > /etc/containerd/config.toml"
+sudo sed -i 's/ SystemdCgroup = false/ SystemdCgroup = true/' /etc/containerd/config.toml
+sudo systemctl restart containerd.service
+sudo systemctl enable --now containerd
+sudo systemctl start --now containerd
+sudo systemctl status containerd
+sudo systemctl restart containerd
+ ```
+
 > confirmar si los paquetes requeridos están disponibles en el repositorio
  ```
  apt-cache search kubeadm && apt-cache search kubelet && apt-cache search kubectl
