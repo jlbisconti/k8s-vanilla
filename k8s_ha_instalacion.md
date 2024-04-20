@@ -18,14 +18,30 @@ La nueva infraestructura virtual consta de :
  Balanceadora Haproxy:
   - 1 CPU
   - 1 GB
-  - 15 GB de disco 
+  - 15 GB de disco
+
+Ip planning
+
+ - Balanceadora HAproxy : 10.10.100.21
+ - Master-01 10.10.100.22
+ - Master-02 10.10.100.23
+ - master-03 10.10.100.24
+
+
+ 
+
 ## Instalacion
 Para comenzar vamos a hacer la realizacion de los pre requisitos necesarios  a saber:
+
+> 
+
+
 
 > Hacerlo en  Masters y Workers
 - Deshabiltar la particion swap de todos los futuros nodos k8s.
 - Confiruracion de reglas iptables y de sysctl.
 - Instalacion de paquetes necesarios.
+  
 
 En primer lugar deshabilitamos la particion swap:
 ```
@@ -62,3 +78,29 @@ sudo sysctl --system
 
 <br />
 <hr>
+
+# Instalacion de paquetes necesarios
+
+> confirmar si los paquetes requeridos están disponibles en el repositorio
+ ```
+ apt-cache search kubeadm && apt-cache search kubelet && apt-cache search kubectl
+ ```
+Instalar los paquetes:
+
+```
+sudo apt install kubeadm kubelet kubectl -y
+ ```
+
+> Marcar los paquetes  que no deben ser upgradeados en el proximo'apt upgrade'
+
+ ```
+ sudo apt-mark hold kubeadm kubelet kubectl
+ sudo systemctl enable kubelet.service
+ sudo reboot
+ sudo systemctl status kubelet.service
+ sudo systemctl restart kubelet.service
+ ```
+
+
+
+
