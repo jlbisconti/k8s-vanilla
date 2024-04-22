@@ -100,6 +100,7 @@ Instalamos los paquetes de kubernestes :
  sudo apt install kubeadm kubelet kubectl -y
   ```
 Marcamos los paquetes para que no sean upgradeables
+
 ```
 sudo apt-mark hold kubeadm kubelet kubectl
 ```
@@ -178,7 +179,7 @@ Instalar los paquetes:
 sudo apt install kubeadm kubelet kubectl -y
  ```
 
-> Marcar los paquetes  que no deben ser upgradeados en el proximo'apt upgrade'
+> Marcar los paquetes  que no deben ser upgradeados en el proximo apt upgrade
 
  ```
  sudo apt-mark hold kubeadm kubelet kubectl
