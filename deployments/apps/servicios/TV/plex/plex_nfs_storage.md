@@ -155,11 +155,13 @@ plex-service       LoadBalancer   10.106.181.249   10.10.100.34   80:31224/TCP
 
 Como podemos ver el servicio se creo. Nuestra balanceadora metallb le proporciono la ip 10.10.100.34 de nuestra LAN con acceso al puerto 80. Con este informacion podemos comprobar en nuestro browser preferido:
 
+![image](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/a9bc4069-b928-4041-80d4-34ea00ff8405)
 
-![alt text][plex]
 
 
-![alt text](image-1.png)
+
+
+
 
 Exitos!!!!
 

@@ -2,7 +2,7 @@
 El presente documento busca detallar la implementacion de un cluster k8s en alta disponibilidad. Aqui veremos como instalar cada nodo del cluster y  de una blanceadora con la solucion HAproxy.
 
 ## Escenario planteado
-En esta oportunidad utilice HyperV Versión: 10.0.22621.1 para correr las vms correspondientes a los nodos k8s y a la balanceadora HAproxy. Nuestra balanceadora va exponer con su propia IP el puerto 6443 a modo de VIP. Todos nuestros nodos master de van a deployar apuntando a nuestra balanceadora.
+En esta oportunidad utilice HyperV Versión: 10.0.22621.1 para correr las vms correspondientes a los nodos k8s y a la balanceadora HAproxy. Nuestra balanceadora va exponer con su propia IP el puerto 6443 a modo de VIP. Todos nuestros nodos master se van a deployar apuntando a nuestra balanceadora.
 La nueva infraestructura virtual consta de :
 
 - 3 nodo Master
@@ -100,6 +100,7 @@ Instalamos los paquetes de kubernestes :
  sudo apt install kubeadm kubelet kubectl -y
   ```
 Marcamos los paquetes para que no sean upgradeables
+
 ```
 sudo apt-mark hold kubeadm kubelet kubectl
 ```
@@ -178,7 +179,7 @@ Instalar los paquetes:
 sudo apt install kubeadm kubelet kubectl -y
  ```
 
-> Marcar los paquetes  que no deben ser upgradeados en el proximo'apt upgrade'
+> Marcar los paquetes  que no deben ser upgradeados en el proximo apt upgrade
 
  ```
  sudo apt-mark hold kubeadm kubelet kubectl
