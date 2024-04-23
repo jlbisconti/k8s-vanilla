@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-config
+data:
+  index.html: |
+    <html>
+    <head>
+        <title>Bienvenidos al servidor web de Jorsat</title>
+    </head>
+    <body>
+        <h1>Bienvenidos al servidor web de Jorsat</h1>
+    </body>
+    </html>
