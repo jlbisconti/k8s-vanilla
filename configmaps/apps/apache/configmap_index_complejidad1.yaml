@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apache-index-html
+  namespace: microservicios
+data:
+  index_complejo1.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Página de inicio</title>
+    </head>
+    <body>
+          <h1>Bienvenidos al sitio de GSVE</h1>
+        <p>Esta es la pagina oficial de GSVE<p>
+    </header>
+    <div class="container">
+        <h2>Main Content Area</h2>
+        <p>Quienes somos</p>
+        <p>Somos una empresa joven, adaptada a las metodologías ágiles, que se utilizan en el mercado. Nuestro equipo está integrado por especialistas, con vasta experiencia en Seguridad, Virtualización, Cloud Computing, Domótica, Vídeo Vigilancia, entre otros.</p>
+    </div>
+    <footer>
+            <p>&copy; 2024 Todos los derechos reservados GSVE<p>
+          <p>&copy; 2024 Todos los derechos reservados GSVE<p>
+    </footer>
+</body>
+</html>

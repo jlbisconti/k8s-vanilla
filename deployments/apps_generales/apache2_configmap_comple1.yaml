@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache2-iscsi
+  namespace: microservicios
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache2-iscsi
+  template:
+    metadata:
+      labels:
+        app: apache2-iscsi
+    spec:
+      volumes:
+      - name: apache2-pv
+        persistentVolumeClaim:
+          claimName: pvc-apache2
+      - name: apache-index-html
+        configMap:
+          name: apache-index-html
+      containers:
+      - name: apache2
+        image: httpd
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: apache2-pv
+          mountPath: /usr/local/apache2/htdocs
+        - name: apache-index-html
+          mountPath: /tmp/apache-index-html
+      restartPolicy: Always
