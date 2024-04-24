@@ -99,7 +99,7 @@ metadata:
 spec:
   storageClassName: openebs-iscsi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
@@ -120,7 +120,7 @@ spec:
     storage: 1Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   iscsi:
     targetPortal: 10.10.150.2
     iqn: iqn.1992-04.com.emc:storage.Jorsat-NAS01.isci-nas
