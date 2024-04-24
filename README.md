@@ -12,6 +12,8 @@
 
 ```
 deployments
-    ├───apps_generales
+    ├───configmaps
+    ├───deployment
+    ├───yamls
     └───infra_k8s
 ```
