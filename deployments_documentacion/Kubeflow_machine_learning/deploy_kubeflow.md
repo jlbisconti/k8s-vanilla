@@ -106,7 +106,8 @@ kubectl get svc -n istio-system
 Luego de verificar que el servicio istio-ingressgateway tiene ip externa de nuestra LAN procdemos a ingresar a nuestro dashboard con nuestro browser preferido:
 
 
-![2024-04-26 14_02_00-Kubeflow Central Dashboard — Mozilla Firefox](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/e1293585-9940-4301-9953-cca58ebd696c)
+
+![2024-04-26 14_02_00-Kubeflow Central Dashboard — Mozilla Firefox](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b0f8dea3-088f-4b5e-a703-f10e6f75fa47)
 
 El nombre de usuario predeterminado es user@example.com y la contraseña es 12341234.
 
