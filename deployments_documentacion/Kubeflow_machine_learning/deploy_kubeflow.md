@@ -79,5 +79,10 @@ Luego verificamos los pods creados y en estado running:
 ```
 kubectl get po -A
 ```
+Vamos a poder ver el status de los pods de manera similar a la siguiente imagen:
+
+
+
+![pods](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/4d479981-ad10-4aca-a1f7-adeda087c28d)
 
 
