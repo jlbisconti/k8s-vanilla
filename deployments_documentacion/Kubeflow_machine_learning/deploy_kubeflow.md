@@ -44,9 +44,10 @@ worker-03 10.10.100.27
 ## Instalacion
 
 EL primer paso sera  crear una carpeta llamada kubeflow y posicinarnos en ella :
+
+```
 mkdir kubeflow
 cd kubeflow
-
 ```
 
 Luego clonamos el repositorio de kubeflow en github:
