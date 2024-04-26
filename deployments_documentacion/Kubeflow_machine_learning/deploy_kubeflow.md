@@ -85,4 +85,37 @@ Vamos a poder ver el status de los pods de manera similar a la siguiente imagen:
 
 ![pods](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/4d479981-ad10-4aca-a1f7-adeda087c28d)
 
+Podemos verificar que se crearon todos los namespaces y pods necesarios y que todo esta en estado running.
+
+
+## Acceso a dashboard
+
+En este paso vamos a editar el servicio  llamado istio-ingressgateway para setear el type como LoadBalancer y asi obetener una ip de nuestra LAN a travez de metallb:
+```
+kubectl edit svc/istio-ingressgateway -n istio-system
+```
+Dentro de specs vamos a cambiar el valor Clusterip por LoadBalancer y luego guardar y salir. De esta forma vamos a verificar que dicho servicio ya tiene una ip externa:
+
+```
+kubectl get svc -n istio-system
+```
+
+
+![svc-metallb](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/cac0d8b8-5164-410c-9d54-99c763c74104)
+
+Luego de verificar que el servicio istio-ingressgateway tiene ip externa de nuestra LAN procdemos a ingresar a nuestro dashboard con nuestro browser preferido:
+
+
+![2024-04-26 14_02_00-Kubeflow Central Dashboard — Mozilla Firefox](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/e1293585-9940-4301-9953-cca58ebd696c)
+
+El nombre de usuario predeterminado es user@example.com y la contraseña es 12341234.
+
+
+
+
+
+
+
+
+
 
