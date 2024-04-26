@@ -52,30 +52,31 @@ cd kubeflow
 Luego clonamos el repositorio de kubeflow en github:
 
 ```
-
 git clone <https://github.com/kubeflow/manifests.git>
-
 ```
 
 Nos movemos al directorio manifiests:
 
 ```
-
 cd manifests
-
 ```
 
 Como siguiente paso vamos a instalar kustomize con el comando:
 
 ```
-
 sudo snap install  kustomize
 ```
 
-Ahora vamos a crear todos los recuros de kubeflow utilizando las herramientas  kustomize y kubectl_
+Ahora vamos a crear todos los recuros de kubeflow utilizando las herramientas  kustomize y kubectl:
 
 ```
 while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
+```
+
+Luego verificamos los pods creados y en estado running:
+
+```
+kubectl get po -A
 ```
 
 
