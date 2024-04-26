@@ -10,36 +10,36 @@ Nuestra  infraestructura consta de:
 
 - 3 nodos Master
 - 3 nodos worker
-- 1 blanceadora haproxy
+- 1 balanceadora haproxy
 - SO Ubuntu 22.04 Server en todas las vms
 
 El flavor asignado a las VMs fue:
 
 Nodos k8s:
-Masters:
-4 CPU
-4 GB de RAM
-120 GB de disco
+- Masters:
+- 4 CPU
+- 4 GB de RAM
+- 120 GB de disco
 
 Nodos worker:
-4 CPU
-16 GB de RAM
-120 GB de disco.
+- 4 CPU
+- 16 GB de RAM
+- 120 GB de disco.
 
 Balanceadora Haproxy:
-1 CPU
-4 GB
-65 GB de disco
+- 1 CPU
+- 4 GB
+- 65 GB de disco
 
-Ip planning
+Ip planning:
 
-Balanceadora 10.10.100.21
-Master-01 10.10.100.22
-Master-02 10.10.100.23
-master-03 10.10.100.24
-worker-01 10.10.100.25
-worker-02 10.10.100.26
-worker-03 10.10.100.27
+- Balanceadora 10.10.100.21
+- master-01 10.10.100.22
+- master-02 10.10.100.23
+- master-03 10.10.100.24
+- worker-01 10.10.100.25
+- worker-02 10.10.100.26
+- worker-03 10.10.100.27
 
 ## Instalacion
 
