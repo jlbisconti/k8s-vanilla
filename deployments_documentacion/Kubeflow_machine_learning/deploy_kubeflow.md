@@ -4,7 +4,7 @@ En este documento breve voy a describir los pasos para deployar la plataforma de
 
 ## Escenario planteado
 
-Frenta a la necesidad de la realizacion de pruebas de plataformas de machine learning  y redes neuronales, se decidio comenzar por kubeflow.
+Frente a a la necesidad de la realizacion de pruebas de plataformas de machine learning  y redes neuronales, se decidio comenzar por kubeflow.
 
 Nuestra  infraestructura consta de:
 
