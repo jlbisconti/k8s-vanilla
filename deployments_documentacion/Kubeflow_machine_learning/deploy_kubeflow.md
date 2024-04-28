@@ -53,7 +53,7 @@ cd kubeflow
 Luego clonamos el repositorio de kubeflow en github:
 
 ```
-git clone <https://github.com/kubeflow/manifests.git>
+git clone https://github.com/kubeflow/manifests.git
 ```
 
 Nos movemos al directorio manifiests:
