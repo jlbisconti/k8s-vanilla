@@ -194,7 +194,7 @@ sudo apt install kubeadm kubelet kubectl -y
 Comenzamos con nuestro nodo master-01:
 
 ```
-sudo kubeadm init --control-plane-endpoint 10.10.100.24:6443 --upload-certs --pod-network-cidr=192.168.0.0/16 
+sudo kubeadm init --control-plane-endpoint 10.10.100.21:6443 --upload-certs --pod-network-cidr=192.168.0.0/16 
 ```
 
 Luego de tener nuestro nodo master-01 vamos a instalar calico como CNI para el manejo de las redes de nuestro cluster.
