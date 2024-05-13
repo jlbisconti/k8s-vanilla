@@ -8,7 +8,8 @@ Profile de Kubeflow: Un profile en Kubeflow es similar al namespace en Kubernete
 
 Para ver los perfiles existentes en el clúster, utilizamos el  siguiente comando:
 
-```kubectl get profiles
+```
+kubectl get profiles
 ```
 
 En nuestro caso vamos a ver que por el momento solo tenemos el profile generado durante el deploy de kubeflow:
