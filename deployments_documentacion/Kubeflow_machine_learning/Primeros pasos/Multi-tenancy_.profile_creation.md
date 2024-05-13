@@ -146,7 +146,7 @@ Ingresamos a la gui en nuestro browser
 
 ![kubeflow-central-dashboard-profile-gsve-login](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b0dc1521-ae09-40ef-ba70-0d793bb63c92)
 
-Podemos comprobar que las credenciales funcionan y ademas ingresamos a nuestro profiles/namespace como lo muestra la siguinte imagen:
+Podemos comprobar que las credenciales funcionan y ademas ingresamos a nuestro profile/namespace como lo muestra la siguinte imagen:
 
 
 ![kubeflow-central-dashboard-profile-gsve-adentro](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/3722fe8d-2ad5-4e4d-bffe-7fac7c96bce5)
