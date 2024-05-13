@@ -138,3 +138,19 @@ Después de aplicar el configmap, reinicie la aplicación Dex para configurar lo
 ```bash
 kubectl rollout restart deployment dex -n auth
 ```
+## Comprobacion final
+Como paso final vamos a probar el login en el Kubeflow central dashboard . a travez de dex, con las credenciales agregadas en el configmap editado.
+
+Ingresamos a la gui en nuestro browser 
+
+
+![kubeflow-central-dashboard-profile-gsve-login](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b0dc1521-ae09-40ef-ba70-0d793bb63c92)
+
+Podemos comprobar que las credenciales funcionan y ademas ingresamos a nuestro profiles/namespace como lo muestra la siguinte imagen:
+
+
+![kubeflow-central-dashboard-profile-gsve-adentro](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/3722fe8d-2ad5-4e4d-bffe-7fac7c96bce5)
+
+Hasta la proxima!!!!
+
+
