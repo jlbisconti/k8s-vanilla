@@ -17,7 +17,7 @@ En nuestro caso vamos a ver que por el momento solo tenemos el profile generado 
 ```bash
 jlb@lb-vmware:~/kubeflow-files$ kubectl get profiles
 NAME                        AGE
-kubeflow-jlb-gsve-com       43m
+kubeflow-user-example-com   20h
 ```
 
 ## Creacion de profile
