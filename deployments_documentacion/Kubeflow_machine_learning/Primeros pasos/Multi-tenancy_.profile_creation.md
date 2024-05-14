@@ -42,6 +42,7 @@ spec:
      persistentvolumeclaims: "1"
      requests.storage: "5Gi"
 ```
+> Nota: Si necesesitamos que nuestro profile no tenga limitacion de recursos no colocamos el campo resourceQuotaSpec en nuesatro yaml.
 
 Luego, como  siguiente paso,  voy a aplicar el archivo  profile-jlb.yaml con el comando
 
