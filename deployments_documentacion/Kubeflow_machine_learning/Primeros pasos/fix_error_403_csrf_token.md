@@ -43,3 +43,10 @@ Para realizar esta modificacion comenze por editar el deployment de jupyter con 
  ```bash
 kubectl edit deploy jupyter-web-app-deployment -n kubeflow
  ```
+En la siguiente imagen podemos ver como ya esta modificada la variable en la seccion spec de el deployment de jupyter:
+
+![midificacion-deployment-jupyter-cookies-false](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/d1a6ff46-b8f3-45d6-af3f-ad7d53382082)
+
+
+
+
