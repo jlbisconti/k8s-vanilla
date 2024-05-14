@@ -45,7 +45,7 @@ kubectl edit deploy jupyter-web-app-deployment -n kubeflow
  ```
 En la siguiente imagen podemos ver como ya esta modificada la variable en la seccion spec de el deployment de jupyter:
 
-![midificacion-deployment-jupyter-cookies-false](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/d1a6ff46-b8f3-45d6-af3f-ad7d53382082)
+![midificacion-deployment-jupyter-cookies-false](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/04fb591b-3e97-4e89-b876-449c34e6656c)
 
 
 Luego realizamos la modificacion de la misma variable en el deployment referente a Volumes:
