@@ -43,7 +43,7 @@ spec:
      requests.storage: "5Gi"
 ```
 
-Luego, como  siguiente paso,  voy a crear el archivo  profile-jlb.yaml con el comando
+Luego, como  siguiente paso,  voy a aplicar el archivo  profile-jlb.yaml con el comando
 
 ```bash
  kubectl apply -f profile-jlb.yaml
