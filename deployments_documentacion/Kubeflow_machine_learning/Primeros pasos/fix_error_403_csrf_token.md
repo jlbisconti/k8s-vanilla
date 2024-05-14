@@ -48,5 +48,16 @@ En la siguiente imagen podemos ver como ya esta modificada la variable en la sec
 ![midificacion-deployment-jupyter-cookies-false](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/d1a6ff46-b8f3-45d6-af3f-ad7d53382082)
 
 
+Luego realizamos la modificacion de la misma variable en el deployment referente a Volumes:
+
+ ```bash
+kubectl edit deploy volumes-web-app-deployment -n kubeflow
+ ```
+
+
+![midificacion-deployment-volumes-cookies-false](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/b21dab9a-39e8-4eb9-87d5-c0fbfbc1c485)
+
+
+Y asi con cada componente que presente el bug mencionado en este documento.
 
 
