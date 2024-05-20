@@ -18,7 +18,7 @@ La nueva infraestructura virtual consta de :
   - 4 GB de RAM
   - 120 GB de disco
     
-  Workers:
+ Workers:
  - 4 CPU
   - 16 GB de RAM
   - 120 GB de disco
