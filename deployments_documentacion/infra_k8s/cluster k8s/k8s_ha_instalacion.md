@@ -12,8 +12,13 @@ La nueva infraestructura virtual consta de :
   
   El flavor asignado a las VMs fue:
   Nodos k8s:
+  Masters:
   - 4 CPU
   - 4 GB de RAM
+  - 120 GB de disco
+  Workers:
+ - 4 CPU
+  - 16 GB de RAM
   - 120 GB de disco
  Balanceadora Haproxy:
   - 1 CPU
