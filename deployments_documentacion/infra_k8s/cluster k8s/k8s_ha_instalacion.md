@@ -6,7 +6,7 @@ En esta oportunidad utilice HyperV Versión: 10.0.22621.1 para correr las vms co
 La nueva infraestructura virtual consta de :
 
 - 3 nodo Master
-- 1 nodo  worker ( por el momento)
+- 3 nodos worker 
 - 1 Balancerador HAproxy
 - SO Ubuntu 22.04 Server en todas las vms
   
