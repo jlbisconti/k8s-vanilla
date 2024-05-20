@@ -6,14 +6,21 @@ En esta oportunidad utilice HyperV Versión: 10.0.22621.1 para correr las vms co
 La nueva infraestructura virtual consta de :
 
 - 3 nodo Master
-- 1 nodo  worker ( por el momento)
+- 3 nodos worker 
 - 1 Balancerador HAproxy
 - SO Ubuntu 22.04 Server en todas las vms
   
   El flavor asignado a las VMs fue:
   Nodos k8s:
+  
+  Masters:
   - 4 CPU
   - 4 GB de RAM
+  - 120 GB de disco
+    
+ Workers:
+ - 4 CPU
+  - 16 GB de RAM
   - 120 GB de disco
  Balanceadora Haproxy:
   - 1 CPU

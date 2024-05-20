@@ -27,7 +27,7 @@ Nodos worker:
 - 120 GB de disco.
 
 Balanceadora Haproxy:
-- 1 CPU
+- 4 CPU
 - 4 GB
 - 65 GB de disco
 
