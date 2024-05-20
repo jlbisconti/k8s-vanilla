@@ -106,7 +106,14 @@ Probamos ingreasar a prometheus via browser:
 
 [http://10.10.100.35:9090/](URL)
 
-> Nota: La ip para acceder a prometheus, en mi caso 10.10.100.35, la obtenemos verificando el svc creado con el comando kubectl get svc -n monitoring. Es la ip externa proporcionada por metallb. 
+> Nota: La ip para acceder a prometheus, en mi caso 10.10.100.35, la obtenemos verificando el svc creado con el comando kubectl get svc. Es la ip externa proporcionada por metallb nuestra LB interna. 
+
+Asi podemos ver como se ve la gui de prometheus:
+
+
+![gui-prometheus](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/e9663f1a-b89e-441b-9cb2-b4d3732481f8)
+
+
 
 ### Deploy de node-exporter
 
