@@ -129,3 +129,11 @@ alertmanager               LoadBalancer   10.107.130.55    10.10.100.36   9093:3
 Luego probamos acceder via browser a la url: 
 
 [http://10.10.100.36:9093/#/alerts](URL)
+
+La siguinte imagen ilustra la interfaz web de alert-manager:
+
+
+![alert-manager](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/9262f731-47cc-4bfd-9c15-1af22452d667)
+
+
+
