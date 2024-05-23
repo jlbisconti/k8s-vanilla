@@ -135,5 +135,5 @@ La siguinte imagen ilustra la interfaz web de alert-manager:
 
 ![alert-manager](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/9262f731-47cc-4bfd-9c15-1af22452d667)
 
-
+En la proxima entrega vamos a ver como conectar grafana con alertt-manager y enviar alertas a gmail.
 
