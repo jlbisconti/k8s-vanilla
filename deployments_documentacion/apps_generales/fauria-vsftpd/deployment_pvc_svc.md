@@ -178,4 +178,12 @@ NAME                              READY   STATUS    RESTARTS   AGE
 ftp-deployment-65c4657cd8-zlvz6   1/1     Running   0          13m
 ```
 
+## Conexion al POD en forma remota
+
+Para esta prueba final utilizare el cliente ftp Filezilla:
+
+ 
+![pod-vsftpd](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/5d5ec4ee-d198-4127-947e-fb0e5c197b23)
+
+
 
