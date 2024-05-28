@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ftp
+  template:
+    metadata:
+      labels:
+        app: ftp
+    spec:
+      containers:
+      - name: ftp
+        image: fauria/vsftpd
+        ports:
+        - containerPort: 21
+        - containerPort: 30000-30009
+          protocol: TCP
+        volumeMounts:
+        - name: ftp-data
+          mountPath: /home/vsftpd
+        env:
+        - name: FTP_USER
+          value: "user"
+        - name: FTP_PASS
+          value: "password"
+        - name: PASV_ADDRESS
+          value: "0.0.0.0"
+        - name: PASV_MIN_PORT
+          value: "30000"
+        - name: PASV_MAX_PORT
+          value: "30009"
+        - name: LOCAL_UMASK
+          value: "022"
+        - name: FILE_OPEN_MODE
+          value: "0777"
+      volumes:
+      - name: ftp-data
+        persistentVolumeClaim:
+          claimName: ftp-pvc
+
