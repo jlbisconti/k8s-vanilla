@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8888
-  type: LoadBalancer  # Cambia a NodePort si no tienes un LoadBalancer disponible
+  type: LoadBalancer  # Cambia a NodePort si no tenes un LoadBalancer disponible
 

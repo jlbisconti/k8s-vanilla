@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: jupyter
-        image: jupyter/base-notebook:latest  # Puedes elegir la imagen de Jupyter adecuada
+        image: jupyter/base-notebook:latest  
         ports:
         - containerPort: 8888
         volumeMounts:
