@@ -58,7 +58,7 @@ Dicho archivo contiene :
 Vamos a crear el namespace monitoring con el comando:
 
 ```bash
- kubectl create namespace monitoring```bash
+ kubectl create namespace monitoring
 ```
 
 A continuacion ingresamos al namespace creado:
