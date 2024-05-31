@@ -27,6 +27,16 @@ Instalaremos el paquete nfs-common con el siguiente comando:
 sudo apt update
 sudo apt install nfs-common -y
 ```
+Agregamos reglas a iptables para permitir trafico NFS:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 2049 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 2049 -j ACCEPT
+sudo iptables -A INPUT -p udp --dport 2049 -j ACCEPT
+sudo iptables -A OUTPUT -p udp --sport 2049 -j ACCEPT
+ iptables-save > /etc/iptables/rules.v4
+```
+
 Una vez instalado el paquete nfs-common en todos los nodos worker vamos a utilizar el comando showmount para verificar la ruta en la que esta exportando el share  nuestro servidor nfs:
 
 ```bash
@@ -78,6 +88,7 @@ El siguiente ejemplo corresponde a mi servidor NAS.
 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=10.10.150.2 --set nfs.path=/nfs/kubernetes --set storageClass.onDelete=true
 ```
 
+
 ### Comprobaciones 
 
 En primer lugar vamos a comprobar que se encuentre creado el storage class correspondiente:
@@ -88,6 +99,9 @@ En primer lugar vamos a comprobar que se encuentre creado el storage class corre
 NAME         PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
 nfs-client   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate           true                   27h
 ```
+
+> Nota: En caso de querer setear el storage class nfs-client como default ejecutamos el comando kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
 
 #### Creamos namespace especifico para APPS
 
