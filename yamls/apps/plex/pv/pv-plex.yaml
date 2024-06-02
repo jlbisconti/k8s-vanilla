@@ -4,9 +4,11 @@ metadata:
   name: plex-pv
 spec:
   capacity:
-    storage: 20Gi
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-client
   nfs:
     server: 10.10.150.2
     path: /nfs/plex
