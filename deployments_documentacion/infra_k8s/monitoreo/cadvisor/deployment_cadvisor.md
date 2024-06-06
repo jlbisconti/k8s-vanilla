@@ -1,6 +1,6 @@
 # Introduccion
 
-cAdvisor (abreviatura de contenedor Advisor) analiza y muestra el uso de recursos y los datos de rendimiento desde los contenedores en ejecución. cAdvisor ya viene preparado para publicar métricas en formato Prometheus.En este documento repaso paso a paso el deploy de cadvisor. 
+cAdvisor (abreviatura de contenedor Advisor) analiza y muestra el uso de recursos y los datos de rendimiento desde los contenedores en ejecución. cAdvisor ya viene preparado para publicar métricas en formato Prometheus. En este documento repaso paso a paso el deploy de cadvisor. 
 
 ## Deploy 
 
@@ -91,6 +91,28 @@ NAME             READY   STATUS    RESTARTS        AGE
 cadvisor-fk7l2   1/1     Running   3 (5m2s ago)    10s
 cadvisor-p6skn   1/1     Running   5 (3m15s ago)   10s
 cadvisor-qvqgm   1/1     Running   6 (2m39s ago)   11s
+
+
+Luego creo el service para darle acceso externo y lograr conectar cadvisor a prometeus. El svc a crear vava a ser el siguiente:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cadvisor
+  namespace: kube-system
+spec:
+  selector:
+    name: cadvisor
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30001  
+  type: LoadBalancer
+```
+
+
 
 ## Modificacion de configmap de prometheus
 
