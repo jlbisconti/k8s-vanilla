@@ -125,6 +125,11 @@ NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)      
 cadvisor             LoadBalancer   10.100.97.25    10.10.100.34   8080:31766/TCP          20s
 ```
 
+Tambien podemos acceder via browser para comprobar que cadvisor este funcionando:
+
+
+![cadvisor-web](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/459e0be2-f7a8-41b6-ba60-b195a63ad7e8)
+
 
 ## Modificacion de configmap de prometheus
 
