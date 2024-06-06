@@ -142,4 +142,24 @@ Como podemos ver desde nuestro kubernetes-dashboad ingresamos la namespace monit
 
 Una vez dentro modificamos el job cadvisor con el agregado de la ip externa de cadvisor tal como lo muestro en la imagen anterior.
 
+Por ultimo ejecuto el comando  para recrear el pod de promethues-server:
+
+```bash
+kubectl rollout restart -n monitoring deployment prometheus-deployment
+```
+Ahora resta verificar desde promethues que cadv¿isor esta arriba:
+
+
+![chek-promethues](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/e55c3490-fdd7-45f3-9efe-8fe445be8624)
+
+
+Nos vemos en el proximo documento!!!!.
+
+
+
+
+
+
+
+
 
