@@ -130,14 +130,16 @@ cadvisor             LoadBalancer   10.100.97.25    10.10.100.34   8080:31766/TC
 
 Como siguiente paso al deploy de los pods de cadvisor en nuestros nodos worker vamos a modficar nuestro configmap de prometheus para que tome las metricas de cadvisor. Para  hacerto en estra oportunidad vamos a ingesar al dashboard de kubernetes ingresando tal como lo muestro en las siguientes imagenes:
 
+
+
 ![configmap1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/3d30de78-ee13-4007-84b6-1a20cd50b1ab)
 
-
+Como podemos ver desde nuestro kubernetes-dashboad ingresamos la namespace monitoring y editamos el configmap prometheus-server-conf.
 
 
 ![configmap2](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/c30bfed4-9716-48ed-b15b-8f7ed8cfdbfd)
 
 
-
+Una vez dentro modificamos el job cadvisor con el agregado de la ip externa de cadvisor tal como lo muestro en la imagen anterior.
 
 
