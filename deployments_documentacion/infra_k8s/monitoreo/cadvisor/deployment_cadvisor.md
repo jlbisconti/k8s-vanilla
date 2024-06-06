@@ -86,12 +86,12 @@ kubectl get pods -n kube-system -l name=cadvisor
 ```
 
 Veremos una salida similar  la siguinte:
-
+```bash
 NAME             READY   STATUS    RESTARTS        AGE
 cadvisor-fk7l2   1/1     Running   3 (5m2s ago)    10s
 cadvisor-p6skn   1/1     Running   5 (3m15s ago)   10s
 cadvisor-qvqgm   1/1     Running   6 (2m39s ago)   11s
-
+```
 
 Luego creo el service para darle acceso externo y lograr conectar cadvisor a prometeus. El svc a crear vava a ser el siguiente:
 
