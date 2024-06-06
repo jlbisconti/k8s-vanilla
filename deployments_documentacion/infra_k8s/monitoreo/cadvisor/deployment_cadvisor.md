@@ -79,13 +79,13 @@ Aplicamos el archivo cadvisor.yaml con el comando:
 kubectl apply -f cadvisor.yaml
 ```
 
-Ahora verificamos el status d elos pods:
+Ahora verificamos el status de los pods:
 
 ```bash
 kubectl get pods -n kube-system -l name=cadvisor
 ```
 
-Veremos una salida similar  la siguinte:
+Veremos una salida similar a  la siguinte:
 ```bash
 NAME             READY   STATUS    RESTARTS        AGE
 cadvisor-fk7l2   1/1     Running   3 (5m2s ago)    10s
@@ -93,7 +93,7 @@ cadvisor-p6skn   1/1     Running   5 (3m15s ago)   10s
 cadvisor-qvqgm   1/1     Running   6 (2m39s ago)   11s
 ```
 
-Luego creo el service para darle acceso externo y lograr conectar cadvisor a prometeus. El svc a crear vava a ser el siguiente:
+Luego creo el service para darle acceso externo y lograr conectar cadvisor a prometeus. El svc a crear va a ser el siguiente:
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ Tambien podemos acceder via browser para comprobar que cadvisor este funcionando
 
 ## Modificacion de configmap de prometheus
 
-Como siguiente paso al deploy de los pods de cadvisor en nuestros nodos worker vamos a modficar nuestro configmap de prometheus para que tome las metricas de cadvisor. Para  hacerto en estra oportunidad vamos a ingesar al dashboard de kubernetes ingresando tal como lo muestro en las siguientes imagenes:
+Como siguiente paso al deploy de los pods de cadvisor en nuestros nodos worker vamos a modficar nuestro configmap de prometheus para que tome las metricas de cadvisor. Para  hacerto en esta oportunidad vamos a ingresar al dashboard de kubernetes  tal como lo muestro en las siguientes imagenes:
 
 
 
@@ -152,7 +152,7 @@ Por ultimo ejecuto el comando  para recrear el pod de promethues-server:
 ```bash
 kubectl rollout restart -n monitoring deployment prometheus-deployment
 ```
-Ahora resta verificar desde promethues que cadv¿isor esta arriba:
+Ahora resta verificar desde promethues que cadvisor esta arriba:
 
 
 ![chek-promethues](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/e55c3490-fdd7-45f3-9efe-8fe445be8624)
