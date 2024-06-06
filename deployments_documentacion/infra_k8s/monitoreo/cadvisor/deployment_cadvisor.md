@@ -112,12 +112,30 @@ spec:
   type: LoadBalancer
 ```
 
+Verificamos el status del servicio con el comando:
+
+```bash
+kubectl get svc -n kube-system
+```
+Obtenemos la salida: 
+
+```bash
+jlb@haproxy:~$ kubectl get svc -n kube-system
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                  AGE
+cadvisor             LoadBalancer   10.100.97.25    10.10.100.34   8080:31766/TCP          20s
+```
 
 
 ## Modificacion de configmap de prometheus
 
-Como siguinte paso al deploy de los pods de cadvisor en nuestros nodos worker vamos a modficar nuestro configmap de prometheus para que tome las metricas de cadvisor. Para  hacerto en estra oportunidad vamos a ingesar al dashboard de kubernetes 
+Como siguiente paso al deploy de los pods de cadvisor en nuestros nodos worker vamos a modficar nuestro configmap de prometheus para que tome las metricas de cadvisor. Para  hacerto en estra oportunidad vamos a ingesar al dashboard de kubernetes ingresando tal como lo muestro en las siguientes imagenes:
 
+![configmap1](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/3d30de78-ee13-4007-84b6-1a20cd50b1ab)
+
+
+
+
+![configmap2](https://github.com/jlbisconti/k8s-vanilla/assets/144631732/c30bfed4-9716-48ed-b15b-8f7ed8cfdbfd)
 
 
 
