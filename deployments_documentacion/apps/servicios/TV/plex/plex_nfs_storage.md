@@ -1,6 +1,6 @@
 ## Introduccion
 
-Esta es una guia breve orientada al deploy de la plataforma multimedia plex dentro de mi cluster k8s vanilla.
+Esta es una guia breve orientada al deploy de la plataforma multimedia plex dentro de un  cluster k8s vanilla.
 
 ## Escenario planteado
 
@@ -30,6 +30,7 @@ Comenzaremos creando el  configuracion de storage persistente de plex. Vamos a n
 - Aplicar los archvos yaml correspondientes
 
 > Nos situamos en el namespace microservicios ya creado en las guias anteriores con el comando: kubectl config set-context --current --namespace=microservicios
+
 
 Creamos  PV (Persistent Volume) generando el archivo pv-plex.yaml:
 
@@ -159,6 +160,7 @@ kubectl get svc
 NAME               TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)          
 plex-service       LoadBalancer   10.106.181.249   10.10.100.34   80:31224/TCP     
 ```
+
 
 > Nota: Nuestro NAS no debe no debe tener habilitada la opcion Allow root acount acces. Por otor lado cuando la carpeta config de plex esta en 3.9 MB de tamaño podremos ver que ya estara accesible plex. 
 
