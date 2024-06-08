@@ -100,6 +100,13 @@ spec:
         image: plexinc/pms-docker:latest
         ports:
         - containerPort: 32400
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
         volumeMounts:
         - name: plex-data
           mountPath: /config
@@ -152,6 +159,10 @@ kubectl get svc
 NAME               TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)          
 plex-service       LoadBalancer   10.106.181.249   10.10.100.34   80:31224/TCP     
 ```
+
+> Nota: Nuestro NAS no debe no debe tener habilitada la opcion Allow root acount acces. Por otor lado cuando la carpeta config de plex esta en 3.9 MB de tamaño podremos ver que ya estara accesible plex. 
+
+
 
 Como podemos ver el servicio se creo. Nuestra balanceadora metallb le proporciono la ip 10.10.100.34 de nuestra LAN con acceso al puerto 80. Con este informacion podemos comprobar en nuestro browser preferido:
 
