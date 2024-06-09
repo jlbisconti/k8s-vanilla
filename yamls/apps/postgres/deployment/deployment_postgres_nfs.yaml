@@ -1,31 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: postgres-deployment
- labels:
-   app: postgres
+  name: postgres-deployment
+  labels:
+    app: postgres
 spec:
- replicas: 1
- selector:
-   matchLabels:
-     app: postgres
- template:
-   metadata:
-     labels:
-       app: postgres
-   spec:
-     containers:
-     - name: postgres
-       image: postgres:latest
-       ports:
-       - containerPort: 5432
-       env:
-       - name: POSTGRES_PASSWORD
-         value: "murdok43" # Colcamos nuestra contraseña
-       volumeMounts:
-       - name: postgres-storage
-         mountPath: /var/lib/postgresql/data
-     volumes:
-     - name: postgres-storage
-       persistentVolumeClaim:
-         claimName: postgres-pvc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      securityContext:
+        fsGroup: 999  # ID de grupo para permisos de escritura
+      initContainers:
+      - name: init-permissions
+        image: busybox
+        command: ["sh", "-c", "mkdir -p /var/lib/postgresql/data && chown -R 999:999 /var/lib/postgresql/data"]
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+      containers:
+      - name: postgres
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "murdok43" # Colocamos nuestra contraseña
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+        securityContext:
+          runAsUser: 999  # Usuario postgres
+          runAsGroup: 999  # Grupo postgres
+          fsGroup: 999     # Grupo para permisos de escritura
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: pvc-postgres
