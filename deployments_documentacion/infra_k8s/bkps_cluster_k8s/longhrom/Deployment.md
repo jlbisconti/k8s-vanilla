@@ -139,7 +139,7 @@ Vamos a cambiar el valor type de ClusterIp a LoadBalancer y nos quedara de la si
       ingress:
       - ip: 10.10.100.40
 ```
-AHora vamos a ingreasar a la GUI de Longhorn desde nuestro browser a la IP 10.10.100.40 tal como lo muestra la siguiente imagen:
+Ingresamos  a la GUI de Longhorn desde nuestro browser a la IP 10.10.100.40 tal como lo muestra la siguiente imagen:
 
 
 
