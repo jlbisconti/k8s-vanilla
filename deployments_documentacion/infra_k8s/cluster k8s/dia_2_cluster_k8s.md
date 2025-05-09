@@ -1,0 +1,64 @@
+
+# 🧱 Día 2 - Continuación del despliegue del clúster Kubernetes
+
+## 🔗 Unión de nodos al clúster
+
+Después de inicializar correctamente el nodo `master-01` como nodo de control del clúster con `kubeadm init`, se procedió a unir los demás nodos:
+
+- Control planes:
+  - `master-02`
+  - `master-03`
+- Nodos worker:
+  - `worker-01`
+  - `worker-02`
+  - `worker-03`
+
+Todos los nodos se unieron usando el comando `kubeadm join` con su respectivo token y hash de descubrimiento. Los nodos `master` utilizaron además el flag `--control-plane` y la clave de certificados para integrarse como nodos de control con etcd stacked.
+
+## ✅ Verificación de nodos
+
+En el nodo con `kubectl` configurado (en este caso, `haproxy`), se verificó el estado de todos los nodos:
+
+```bash
+kubectl get nodes
+```
+
+Resultado:
+
+```
+NAME        STATUS   ROLES           AGE   VERSION
+master-01   Ready    control-plane   130m  v1.29.15
+master-02   Ready    control-plane   128m  v1.29.15
+master-03   Ready    control-plane   75m   v1.29.15
+worker-01   Ready    worker          72m   v1.29.15
+worker-02   Ready    worker          72m   v1.29.15
+worker-03   Ready    worker          72m   v1.29.15
+```
+
+## 🌐 Instalación de Flannel como CNI
+
+Se aplicó Flannel como plugin de red para todos los nodos:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+```
+
+## 🖥️ Despliegue de Kubernetes Dashboard
+
+El panel de control web `Kubernetes Dashboard` fue desplegado con:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
+
+Se recomendó crear un ServiceAccount con permisos administrativos para acceder al Dashboard.
+
+## 📌 Notas adicionales
+
+- El archivo `/etc/hosts` en todas las VMs incluye los nombres de cada nodo y su IP correspondiente.
+- El load balancer HAProxy está configurado en `10.10.100.24:6443` como entrada al control-plane.
+- Todos los nodos tienen `swap` desactivado como requisito de `kubeadm`.
+
+---
+
+🎯 El clúster está funcional con alta disponibilidad en los nodos master y con 3 workers listos para ejecutar workloads.
