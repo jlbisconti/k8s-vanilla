@@ -15,6 +15,14 @@ Después de inicializar correctamente el nodo `master-01` como nodo de control d
 
 Todos los nodos se unieron usando el comando `kubeadm join` con su respectivo token y hash de descubrimiento. Los nodos `master` utilizaron además el flag `--control-plane` y la clave de certificados para integrarse como nodos de control con etcd stacked.
 
+## Seteo de rol de los nodos worker
+
+```bash
+kubectl label node worker-01 node-role.kubernetes.io/worker=worker
+kubectl label node worker-02 node-role.kubernetes.io/worker=worker
+kubectl label node worker-03 node-role.kubernetes.io/worker=worker
+```
+
 ## ✅ Verificación de nodos
 
 En el nodo con `kubectl` configurado (en este caso, `haproxy`), se verificó el estado de todos los nodos:
@@ -33,23 +41,6 @@ master-03   Ready    control-plane   75m   v1.29.15
 worker-01   Ready    worker          72m   v1.29.15
 worker-02   Ready    worker          72m   v1.29.15
 worker-03   Ready    worker          72m   v1.29.15
-```
-
-## Seteo de rol de los nodos worker
-
-```bash
-kubectl label node worker-01 node-role.kubernetes.io/worker=worker
-kubectl label node worker-02 node-role.kubernetes.io/worker=worker
-kubectl label node worker-03 node-role.kubernetes.io/worker=worker
-```
-
-
-## 🌐 Instalación de Flannel como CNI
-
-Se aplicó Flannel como plugin de red para todos los nodos:
-
-```bash
-kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 ```
 
 ## 🖥️ Despliegue de Kubernetes Dashboard
