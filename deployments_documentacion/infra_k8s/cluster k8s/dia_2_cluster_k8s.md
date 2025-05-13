@@ -35,6 +35,15 @@ worker-02   Ready    worker          72m   v1.29.15
 worker-03   Ready    worker          72m   v1.29.15
 ```
 
+## Seteo de rol de los nodos worker
+
+```bash
+kubectl label node worker-01 node-role.kubernetes.io/worker=worker
+kubectl label node worker-02 node-role.kubernetes.io/worker=worker
+kubectl label node worker-03 node-role.kubernetes.io/worker=worker
+```
+
+
 ## 🌐 Instalación de Flannel como CNI
 
 Se aplicó Flannel como plugin de red para todos los nodos:
