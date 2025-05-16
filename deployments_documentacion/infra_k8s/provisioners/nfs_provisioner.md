@@ -43,7 +43,7 @@ Una vez instalado el paquete nfs-common en todos los nodos worker vamos a utiliz
 showmount -e 10.10.50.2
 ```
 En nuestro caso la salida  obtenida  fue 
-Export list for 10.10.50.2:
+Export list for 10.10.150.2:
 /mnt/soho_storage/samba/shares/kubernetes *
 
 ### Instalacion de Helm
