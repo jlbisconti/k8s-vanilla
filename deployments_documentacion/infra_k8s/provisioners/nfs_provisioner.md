@@ -40,7 +40,7 @@ sudo iptables -A OUTPUT -p udp --sport 2049 -j ACCEPT
 Una vez instalado el paquete nfs-common en todos los nodos worker vamos a utilizar el comando showmount para verificar la ruta en la que esta exportando el share  nuestro servidor nfs:
 
 ```bash
-showmount -e 10.10.50.2
+showmount -e 10.10.150.2
 ```
 En nuestro caso la salida  obtenida  fue 
 Export list for 10.10.150.2:
