@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   selector:
-    app: prometheus
+    app: prometheus-server
   ports:
     - protocol: TCP
       port: 9090
